@@ -1,12 +1,13 @@
 {
     "manifest_version": 2,
     "name": "Ninja Bucks",
-    "description": "Add Ninja Bucks to kiosk",
+    "description": "Add Ninja Bucks to kiosk  --By Karthik Sankar",
     "version": "0.1",
     "content_scripts": [
         {
           "matches": [
-            "https://dojo.code.ninja/kiosk/cn-nj-kendall-park/"
+            "https://dojo.code.ninja/kiosk/cn-nj-kendall-park/",
+              "https://dojo.code.ninja/kiosk/cn-nj-piscataway/"
           ],
           "js": ["content.js"]
         }
