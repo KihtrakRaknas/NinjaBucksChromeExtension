@@ -1,3 +1,8 @@
+/**************************************
+Ninja Bucks Chrome Extension
+By: Karthik Sankar
+***************************************/
+
 recurs();
 
 function addScript( src ) {
