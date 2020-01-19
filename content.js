@@ -38,7 +38,15 @@ function recurs(){
     firebase.initializeApp(firebaseConfig); 
 var ninjaData = {};
 console.log("getting center")
-var CNcenter = window.location.href.split("/")[window.location.href.split("/").length-1];
+var urlParts = window.location.href.split("/");
+var CNcenter = 'cn-nj-kendall-park'
+for(var i = urlParts.length-1; i!=-1; i--)
+  if(urlParts[i]){
+    CNcenter = urlParts[i]
+    break;
+  }
+    
+
 console.log(CNcenter)
 function addNinBucks(){
 console.log("NB")
