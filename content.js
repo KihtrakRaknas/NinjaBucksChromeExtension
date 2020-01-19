@@ -37,6 +37,8 @@ function recurs(){
   };
     firebase.initializeApp(firebaseConfig); 
 var ninjaData = {};
+var CNcenter = window.location.href.split("/")[window.location.href.split("/").length-1];
+console.log(CNcenter)
 function addNinBucks(){
 console.log("NB")
 for(card of document.getElementsByClassName("s-card-container")){
@@ -48,7 +50,7 @@ for(card of document.getElementsByClassName("s-card-container")){
 	if(ninjaData[card.getElementsByClassName("s-card-name")[0].getElementsByTagName("span")[0].innerText])
 		ninjaBucks = ninjaData[card.getElementsByClassName("s-card-name")[0].getElementsByTagName("span")[0].innerText];
 	else
-		firebase.database().ref().update({
+		firebase.database().ref(CNcenter).update({
     [card.getElementsByClassName("s-card-name")[0].getElementsByTagName("span")[0].innerText]: 0,
 	});
 	for(textEl of card.getElementsByClassName("s-card-footer")[0].getElementsByTagName("span")){
@@ -83,7 +85,7 @@ for(card of document.getElementsByClassName("s-card-container")){
 
 }
 console.log("update")
-	firebase.database().ref().on('value', function(snapshot) {
+	firebase.database().ref(CNcenter).on('value', function(snapshot) {
 	console.log("update")
 		ninjaData = snapshot.val()
 	  addNinBucks(snapshot.val());
