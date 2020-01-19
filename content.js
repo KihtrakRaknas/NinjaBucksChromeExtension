@@ -37,6 +37,7 @@ function recurs(){
   };
     firebase.initializeApp(firebaseConfig); 
 var ninjaData = {};
+console.log("getting center")
 var CNcenter = window.location.href.split("/")[window.location.href.split("/").length-1];
 console.log(CNcenter)
 function addNinBucks(){
