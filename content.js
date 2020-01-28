@@ -107,7 +107,7 @@ console.log("update")
 
     var iframe;
     iframe = document.createElement('IFRAME');
-    iframe.src = 'https://www.google.com/';
+    iframe.src = 'https://www.codeninjas.com/';
     iframe.style.display = 'none';
     iframe.style.height = '100vh';
     iframe.style.width = '100%';
