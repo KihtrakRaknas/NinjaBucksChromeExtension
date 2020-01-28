@@ -105,7 +105,20 @@ console.log("update")
     `
     document.body.appendChild(script)
 
+    var iframe;
+    iframe = document.createElement('IFRAME');
+    iframe.src = 'https://www.google.com/';
+    iframe.style.display = 'none';
+    iframe.style.height = '100vh';
+    iframe.style.width = '100%';
+    document.body.style.overflow = "hidden";
+    document.body.appendChild(iframe);
 
+    setInterval(()=>{
+      iframe.style.display = 'block'
+      setTimeout(()=>iframe.style.display = 'none',1000*60*.5)// half a minute
+    },1000*60*30) //30 minutes
+    
 }else{
 addScript("https://www.gstatic.com/firebasejs/5.9.3/firebase.js")
 setTimeout(recurs, 1000);
