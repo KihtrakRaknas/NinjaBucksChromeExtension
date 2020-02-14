@@ -117,11 +117,14 @@ function recurs(){
           document.body.style.overflow = "hidden";
           //document.body.appendChild(iframe);
           document.body.insertBefore(iframe,document.body.childNodes[0])
-
           setInterval(()=>{
             console.log("show")
             iframe.style.display = 'block'
-            setTimeout(()=>iframe.style.display = 'none',1000*60*.5)// half a minute
+            document.getElementsByTagName("ui-view")[0].style.display = "none"
+            setTimeout(()=>{
+              iframe.style.display = 'none'
+              document.getElementsByTagName("ui-view")[0].style.display = ""
+            },1000*60*.5)// half a minute
           },1000*60*1) //30 minutes
         })
           `
