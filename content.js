@@ -104,10 +104,10 @@ function recurs(){
 
         
 
-
+        var iframe;
         firebase.database().ref("pop").once('value',function(snapshot){
           //Pop up
-          var iframe;
+          
           iframe = document.createElement('IFRAME');  
           console.log(snapshot.val()["url"]);
           iframe.src = snapshot.val()["url"]//'https://www.codeninjas.com/';
