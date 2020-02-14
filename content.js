@@ -121,8 +121,12 @@ function recurs(){
           setInterval(()=>{
             console.log("show")
             iframe.style.display = 'block'
-            setTimeout(()=>iframe.style.display = 'none',1000*60*.5)// half a minute
-          },1000*60*1) //30 minutes
+		document.getElementsByTagName("ui-view")[0].style.display = "none"
+            setTimeout(()=>{
+document.getElementsByTagName("ui-view")[0].style.display = ""
+iframe.style.display = 'none'
+},1000*60*.5)// half a minute
+          },1000*60*15) //15 minutes
         })
           `
           document.body.appendChild(script)
