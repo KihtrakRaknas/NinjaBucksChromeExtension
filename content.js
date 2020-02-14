@@ -108,7 +108,8 @@ function recurs(){
         firebase.database().ref("pop").once('value',function(snapshot){
           //Pop up
           var iframe;
-          iframe = document.createElement('IFRAME');
+          iframe = document.createElement('IFRAME');  
+          console.log(snapshot.val()["url"]);
           iframe.src = snapshot.val()["url"]//'https://www.codeninjas.com/';
           iframe.style.display = 'none';
           iframe.style.height = '100vh';
@@ -117,6 +118,7 @@ function recurs(){
           document.body.appendChild(iframe);
 
           setInterval(()=>{
+            console.log("show")
             iframe.style.display = 'block'
             setTimeout(()=>iframe.style.display = 'none',1000*60*.5)// half a minute
           },1000*60*1) //30 minutes
