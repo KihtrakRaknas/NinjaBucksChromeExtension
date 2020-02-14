@@ -119,7 +119,7 @@ function recurs(){
           setInterval(()=>{
             iframe.style.display = 'block'
             setTimeout(()=>iframe.style.display = 'none',1000*60*.5)// half a minute
-          },1000*60*30) //30 minutes
+          },1000*60*1) //30 minutes
         })
           `
           document.body.appendChild(script)
