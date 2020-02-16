@@ -5,26 +5,25 @@ By: Karthik Sankar
 
 recurs();
 
-function addScript( src ) {
-    var s = document.createElement( 'script' );
-    s.setAttribute( 'src', src );
-    document.body.appendChild( s );
-  }
-
-  function fire(){
-    for(src of document.getElementsByTagName("script")){
-        if(src.src.includes("firebase"))
-            return true;
-    }
-    return false;
+function addScript(src) {
+  var s = document.createElement("script");
+  s.setAttribute("src", src);
+  document.body.appendChild(s);
 }
 
-function recurs(){
-    if(document.readyState == "complete"){
-        if(fire()){
-          console.log("fire");
-              var script = document.createElement("script")
-          script.innerHTML = `    
+function fire() {
+  for (src of document.getElementsByTagName("script")) {
+    if (src.src.includes("firebase")) return true;
+  }
+  return false;
+}
+
+function recurs() {
+  if (document.readyState == "complete") {
+    if (fire()) {
+      console.log("fire");
+      var script = document.createElement("script");
+      script.innerHTML = `    
         var firebaseConfig = {
           apiKey: "AIzaSyB9qbG1G1TBucaoEZvvsevtQ172HHGDyXQ",
           authDomain: "cnninjabucks.firebaseapp.com",
@@ -60,8 +59,8 @@ function recurs(){
           ninjaBucks = ninjaData[card.getElementsByClassName("s-card-name")[0].getElementsByTagName("span")[0].innerText];
         else
           firebase.database().ref(CNcenter).update({
-          [card.getElementsByClassName("s-card-name")[0].getElementsByTagName("span")[0].innerText]: 0,
-        });
+            [card.getElementsByClassName("s-card-name")[0].getElementsByTagName("span")[0].innerText]: 0,
+          });
         for(textEl of card.getElementsByClassName("s-card-footer")[0].getElementsByTagName("span")){
           if(textEl.innerText.includes("Ninja Bucks")){
             needRender = false;
@@ -110,7 +109,16 @@ function recurs(){
           
           iframe = document.createElement('IFRAME');  
           console.log(snapshot.val()["url"]);
-          iframe.src = 'https://www.facebook.com/CodeNinjasKendallPark/videos/608856116604684/'//snapshot.val()["url"]//'https://www.facebook.com/CodeNinjasKendallPark/videos/608856116604684/';
+          var url = snapshot.val()["url"];
+          if(!url)
+            url = 'https://www.codeninjas.com/'
+          iframe.src = url;
+          var interval = snapshot.val()["interval"]
+          if(!interval)
+            interval = 1000*60*15
+          var showTime = snapshot.val()["showTime"]
+          if(!showTime)
+            showTime = 1000*60*.5
           iframe.style.display = 'none';
           iframe.style.height = '100vh';
           iframe.style.width = '100%';
@@ -120,23 +128,22 @@ function recurs(){
           setInterval(()=>{
             console.log("show")
             iframe.style.display = 'block'
-		document.getElementsByTagName("ui-view")[0].style.display = "none"
+		        document.getElementsByTagName("ui-view")[0].style.display = "none"
             setTimeout(()=>{
-document.getElementsByTagName("ui-view")[0].style.display = ""
-iframe.style.display = 'none'
-},1000*60*1)// half a minute
-          },1000*60*15) //15 minutes
+              document.getElementsByTagName("ui-view")[0].style.display = ""
+              iframe.style.display = 'none'
+            },showTime)// half a minute
+          },interval) //15 minutes
         })
-          `
-          document.body.appendChild(script)
-          
-      }else{
-        addScript("https://www.gstatic.com/firebasejs/5.9.3/firebase.js")
-        setTimeout(recurs, 1000);
-      }
-        console.log("inside");
+          `;
+      document.body.appendChild(script);
     } else {
-        setTimeout(recurs, 1000);
-        console.log("tryin again");
+      addScript("https://www.gstatic.com/firebasejs/5.9.3/firebase.js");
+      setTimeout(recurs, 1000);
     }
+    console.log("inside");
+  } else {
+    setTimeout(recurs, 1000);
+    console.log("tryin again");
+  }
 }
