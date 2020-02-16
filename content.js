@@ -110,7 +110,7 @@ function recurs(){
           
           iframe = document.createElement('IFRAME');  
           console.log(snapshot.val()["url"]);
-          iframe.src = snapshot.val()["url"]//'https://www.codeninjas.com/';
+          iframe.src = 'https://www.facebook.com/CodeNinjasKendallPark/videos/608856116604684/'//snapshot.val()["url"]//'https://www.facebook.com/CodeNinjasKendallPark/videos/608856116604684/';
           iframe.style.display = 'none';
           iframe.style.height = '100vh';
           iframe.style.width = '100%';
@@ -124,7 +124,7 @@ function recurs(){
             setTimeout(()=>{
 document.getElementsByTagName("ui-view")[0].style.display = ""
 iframe.style.display = 'none'
-},1000*60*.5)// half a minute
+},1000*60*1)// half a minute
           },1000*60*15) //15 minutes
         })
           `
